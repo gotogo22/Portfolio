@@ -11,10 +11,20 @@
 |
 */
 
+use App\Http\Controllers\CustemerController;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
+
+Route::group(['prefix' => 'custemer', 'middleware'=> 'auth'], function (){
+    Route::get('index', 'CustemerController@index')->name('custemer.index');
+});
+
+
+//Rest
+// Route::resource('custemers', 'CustemerController');
 
 Route::get('/home', 'HomeController@index')->name('home');
