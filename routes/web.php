@@ -19,8 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::group(['prefix' => 'custemer', 'middleware'=> 'auth'], function (){
-    Route::get('index', 'CustemerController@index')->name('custemer.index');
+Route::group(['prefix' => 'user', 'middleware'=> 'auth'], function (){
+    Route::get('index', 'CustemerController@index')->name('user.index');
+    Route::get('create', 'CustemerController@create')->name('user.create');
 });
 
 
